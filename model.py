@@ -5,6 +5,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 import pandas as pd
+import pickle
 
 maxlen=50
 def get_sequences(tokenizer, sentences):
@@ -59,7 +60,9 @@ h = model.fit(
 )
 
 model.save("model.h5")
-print("Saved model to disk")
+with open('tokenizer.pickle', 'wb') as handle:
+    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+print("Saved model and tokenizer to disk")
 
 #sentence = 'olen vihainen sinulle'
 #sequence = tokenizer.texts_to_sequences([sentence])
