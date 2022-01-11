@@ -58,6 +58,9 @@ h = model.fit(
      callbacks=[tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=4)]
 )
 
+model.save("model.h5")
+print("Saved model to disk")
+
 #sentence = 'olen vihainen sinulle'
 #sequence = tokenizer.texts_to_sequences([sentence])
 #paddedSequence = pad_sequences(sequence, truncating = 'post', padding='post', maxlen=maxlen)
