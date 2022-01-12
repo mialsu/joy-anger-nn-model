@@ -1,3 +1,4 @@
 #other
 model.h5
 tokenizer.pickle
+model.kerasmodel

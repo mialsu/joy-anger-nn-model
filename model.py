@@ -6,6 +6,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import pickle
+import os
 
 maxlen=50
 def get_sequences(tokenizer, sentences):
@@ -59,7 +60,8 @@ h = model.fit(
      callbacks=[tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=4)]
 )
 
-model.save("model.h5")
+model.save(os.path.join('model.kerasmodel'))
+model.save(os.path.join('model.h5'))
 with open('tokenizer.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 print("Saved model and tokenizer to disk")
